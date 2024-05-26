@@ -11,7 +11,7 @@
 #'
 #' @examples
 #' download.file(url="https://raw.githubusercontent.com/Enno-W/excelbib/main/Excel_References.xlsx", destfile = "Excel_References.xlsx", mode ="wb")
-#' xlsx_to_bib ("Excel_References.xlsx", bib_file="my_bibliography.bib", sheet = 1, column = 2, first_row=1)
+#' xlsx_to_bib ("Excel_References.xlsx", bib_file="my_bibliography.bib", sheet = 2, column = 1, first_row = 2)
 xlsx_to_bib <- function(excel_file, bib_file = "bibliography.bib", sheet = 2, column = 1, first_row = 2) {
 
   if (!file.exists(excel_file)) {
@@ -25,3 +25,4 @@ xlsx_to_bib <- function(excel_file, bib_file = "bibliography.bib", sheet = 2, co
 
   message("Bibliography has been successfully written to ", bib_file)
 }
+
