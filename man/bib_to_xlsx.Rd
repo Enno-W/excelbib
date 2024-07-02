@@ -25,6 +25,7 @@ Title
 }
 \examples{
 download.file(url="https://raw.githubusercontent.com/Enno-W/excelbib/main/Excel_References.xlsx", destfile = "Excel_References.xlsx", mode ="wb")
-download.file(url="https://raw.githubusercontent.com/Enno-W/excelbib/main/export.bib", destfile = "Excel_References.xlsx", mode ="wb")
-bib_to_xlsx ()
+download.file(url="https://raw.githubusercontent.com/Enno-W/excelbib/main/export.bib", destfile = "export.bib", mode ="wb")
+require("openxlsx")
+bib_to_xlsx()
 }

@@ -11,9 +11,15 @@
 #'
 #' @examples
 #' download.file(url="https://raw.githubusercontent.com/Enno-W/excelbib/main/Excel_References.xlsx", destfile = "Excel_References.xlsx", mode ="wb")
+#' require("xlsx")
 #' xlsx_to_bib ("Excel_References.xlsx", bib_file="my_bibliography.bib", sheet = 2, column = 1, first_row = 2)
 xlsx_to_bib <- function(excel_file, bib_file = "bibliography.bib", sheet = 2, column = 1, first_row = 2) {
-  requireNamespace("xlsx")
+  if (!requireNamespace("xlsx", quietly = TRUE)) {
+    stop(
+      "Package \"xlsx\" must be installed to use this function.",
+      call. = FALSE
+    )
+  }
   if (!file.exists(excel_file)) {
     stop("The specified Excel file does not exist.")
   }
@@ -37,10 +43,16 @@ xlsx_to_bib <- function(excel_file, bib_file = "bibliography.bib", sheet = 2, co
 #'
 #' @examples
 #' download.file(url="https://raw.githubusercontent.com/Enno-W/excelbib/main/Excel_References.xlsx", destfile = "Excel_References.xlsx", mode ="wb")
-#' download.file(url="https://raw.githubusercontent.com/Enno-W/excelbib/main/export.bib", destfile = "Excel_References.xlsx", mode ="wb")
-#' bib_to_xlsx ()
+#' download.file(url="https://raw.githubusercontent.com/Enno-W/excelbib/main/export.bib", destfile = "export.bib", mode ="wb")
+#' require("openxlsx")
+#' bib_to_xlsx()
 bib_to_xlsx <- function(bib_file_path = "export.bib", excel_file_path = "Excel_References.xlsx", sheet_name = "Import") {
-  requireNamespace("openxlsx")
+  if (!requireNamespace("openxlsx", quietly = TRUE)) {
+    stop(
+      "Package \"openxlsx\" must be installed to use this function.",
+      call. = FALSE
+    )
+  }
   bib_file <- readLines(bib_file_path, warn = FALSE)
   text <- paste(bib_file, collapse = " ")
   entries <- unlist(strsplit(text, split = "\\@"))

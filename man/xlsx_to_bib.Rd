@@ -31,5 +31,6 @@ Title
 }
 \examples{
 download.file(url="https://raw.githubusercontent.com/Enno-W/excelbib/main/Excel_References.xlsx", destfile = "Excel_References.xlsx", mode ="wb")
+require("xlsx")
 xlsx_to_bib ("Excel_References.xlsx", bib_file="my_bibliography.bib", sheet = 2, column = 1, first_row = 2)
 }
