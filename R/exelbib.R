@@ -13,7 +13,7 @@
 #' download.file(url="https://raw.githubusercontent.com/Enno-W/excelbib/main/Excel_References.xlsx", destfile = "Excel_References.xlsx", mode ="wb")
 #' require("xlsx")
 #' xlsx_to_bib ("Excel_References.xlsx", bib_file="my_bibliography.bib", sheet = 2, column = 1, first_row = 2)
-xlsx_to_bib <- function(excel_file, bib_file = "bibliography.bib", sheet = 2, column = 1, first_row = 2) {
+xlsx_to_bib <- function(excel_file = "Excel_References.xlsx", bib_file = "bibliography.bib", sheet = 2, column = 1, first_row = 2) {
   if (!requireNamespace("xlsx", quietly = TRUE)) {
     stop(
       "Package \"xlsx\" must be installed to use this function.",
