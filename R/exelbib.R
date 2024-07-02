@@ -66,7 +66,7 @@ bib_to_xlsx <- function(bib_file_path = "export.bib", excel_file_path = "Excel_R
   entries <- paste("@", entries, sep = "")
   data <- data.frame(entries)
   wb <- openxlsx::loadWorkbook(excel_file_path)
-  writeData(wb, sheet_name, data, colNames = FALSE)
+  openxlsx::writeData(wb, sheet_name, data, colNames = FALSE)
   openxlsx::saveWorkbook(wb, excel_file_path, overwrite = TRUE)
   message("Bibliography has been successfully written to ", excel_file_path)
 }
