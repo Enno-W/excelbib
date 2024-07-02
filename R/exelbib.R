@@ -28,9 +28,9 @@ xlsx_to_bib <- function(excel_file, bib_file = "bibliography.bib", sheet = 2, co
 
 #' Title
 #'
-#' @param bib_file_path
-#' @param excel_file_path
-#' @param sheet_name
+#' @param excel_file_path The name or directory of the Excel file you use for your References. In the file, the bibtex-entries should be arranged in a column, one entry per cell.
+#' @param bib_file_path The name of your .bib-file. Defaults to "export.bib".
+#' @param sheet_name Sheet name where you want the references imported to, default is "Import".
 #'
 #' @return References in your Excel file!
 #' @export
