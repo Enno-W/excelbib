@@ -25,4 +25,3 @@ xlsx_to_bib <- function(excel_file, bib_file = "bibliography.bib", sheet = 2, co
 
   message("Bibliography has been successfully written to ", bib_file)
 }
-
