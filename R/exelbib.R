@@ -38,7 +38,8 @@ xlsx_to_bib <- function(excel_file, bib_file = "bibliography.bib", sheet = 2, co
 #' @examples
 #' download.file(url="https://raw.githubusercontent.com/Enno-W/excelbib/main/Excel_References.xlsx", destfile = "Excel_References.xlsx", mode ="wb")
 #' download.file(url="https://raw.githubusercontent.com/Enno-W/excelbib/main/export.bib", destfile = "Excel_References.xlsx", mode ="wb")
-process_bib_to_excel <- function(bib_file_path = "export.bib", excel_file_path = "Excel_References.xlsx", sheet_name = "Import") {
+#' bib_to_xlsx ()
+bib_to_xlsx <- function(bib_file_path = "export.bib", excel_file_path = "Excel_References.xlsx", sheet_name = "Import") {
   requireNamespace("openxlsx")
   bib_file <- readLines(bib_file_path, warn = FALSE)
   text <- paste(bib_file, collapse = " ")
