@@ -13,7 +13,7 @@
 #' download.file(url="https://raw.githubusercontent.com/Enno-W/excelbib/main/Excel_References.xlsx", destfile = "Excel_References.xlsx", mode ="wb")
 #' xlsx_to_bib ("Excel_References.xlsx", bib_file="my_bibliography.bib", sheet = 2, column = 1, first_row = 2)
 xlsx_to_bib <- function(excel_file, bib_file = "bibliography.bib", sheet = 2, column = 1, first_row = 2) {
-
+  requireNamespace("xlsx")
   if (!file.exists(excel_file)) {
     stop("The specified Excel file does not exist.")
   }
@@ -24,4 +24,30 @@ xlsx_to_bib <- function(excel_file, bib_file = "bibliography.bib", sheet = 2, co
   writeLines(citation_keys, bib_file)
 
   message("Bibliography has been successfully written to ", bib_file)
+}
+
+#' Title
+#'
+#' @param bib_file_path
+#' @param excel_file_path
+#' @param sheet_name
+#'
+#' @return References in your Excel file!
+#' @export
+#'
+#' @examples
+#' download.file(url="https://raw.githubusercontent.com/Enno-W/excelbib/main/Excel_References.xlsx", destfile = "Excel_References.xlsx", mode ="wb")
+#' download.file(url="https://raw.githubusercontent.com/Enno-W/excelbib/main/export.bib", destfile = "Excel_References.xlsx", mode ="wb")
+process_bib_to_excel <- function(bib_file_path = "export.bib", excel_file_path = "Excel_References.xlsx", sheet_name = "Import") {
+  requireNamespace("openxlsx")
+  bib_file <- readLines(bib_file_path, warn = FALSE)
+  text <- paste(bib_file, collapse = " ")
+  entries <- unlist(strsplit(text, split = "\\@"))
+  entries <- entries[entries != ""]
+  entries <- paste("@", entries, sep = "")
+  data <- data.frame(entries)
+  wb <- openxlsx::loadWorkbook(excel_file_path)
+  writeData(wb, sheet_name, data, colNames = FALSE)
+  openxlsx::saveWorkbook(wb, excel_file_path, overwrite = TRUE)
+  message("Bibliography has been successfully written to ", excel_file_path)
 }
