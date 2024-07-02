@@ -20,6 +20,9 @@ xlsx_to_bib <- function(excel_file, bib_file = "bibliography.bib", sheet = 2, co
       call. = FALSE
     )
   }
+  if (!"xlsx" %in% loadedNamespaces()) {
+    library(xlsx)
+  }
   if (!file.exists(excel_file)) {
     stop("The specified Excel file does not exist.")
   }
@@ -52,6 +55,9 @@ bib_to_xlsx <- function(bib_file_path = "export.bib", excel_file_path = "Excel_R
       "Package \"openxlsx\" must be installed to use this function.",
       call. = FALSE
     )
+  }
+  if (!"openxlsx" %in% loadedNamespaces()) {
+    library(openxlsx)
   }
   bib_file <- readLines(bib_file_path, warn = FALSE)
   text <- paste(bib_file, collapse = " ")
