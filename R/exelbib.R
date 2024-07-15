@@ -10,7 +10,7 @@
 #' @export
 #'
 #' @examples
-#' download.file(url="https://raw.githubusercontent.com/Enno-W/excelbib/main/Excel_References_example.xlsx", destfile = "Excel_References.xlsx", mode ="wb")
+#' download.file(url="https://raw.githubusercontent.com/Enno-W/excelbib/main/Excel_References_example.xlsx", destfile = "Excel_References_example.xlsx", mode ="wb")
 #' require("xlsx")
 #' xlsx_to_bib ("Excel_References_example.xlsx", bib_file="example_bibliography.bib", sheet = 2, column = 1, first_row = 2)
 xlsx_to_bib <- function(excel_file = "References.xlsx", bib_file = "bibliography.bib", sheet = 2, column = 1, first_row = 2) {
@@ -45,10 +45,10 @@ xlsx_to_bib <- function(excel_file = "References.xlsx", bib_file = "bibliography
 #' @export
 #'
 #' @examples
-#' download.file(url="https://raw.githubusercontent.com/Enno-W/excelbib/main/Excel_References.xlsx", destfile = "Excel_References.xlsx", mode ="wb")
-#' download.file(url="https://raw.githubusercontent.com/Enno-W/excelbib/main/export.bib", destfile = "export.bib", mode ="wb")
+#' download.file(url="https://raw.githubusercontent.com/Enno-W/excelbib/main/Excel_References_example.xlsx", destfile = "Excel_References_example.xlsx", mode ="wb")
+#' download.file(url="https://raw.githubusercontent.com/Enno-W/excelbib/main/export_example.bib", destfile = "export_example.bib", mode ="wb")
 #' require("openxlsx")
-#' bib_to_xlsx()
+#' bib_to_xlsx(bib_file_path = "export_example.bib", excel_file_path = "Excel_References_example.xlsx")
 bib_to_xlsx <- function(bib_file_path = "export.bib", excel_file_path = "References.xlsx", sheet_name = "Import") {
   if (!requireNamespace("openxlsx", quietly = TRUE)) {
     stop(
