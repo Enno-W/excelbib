@@ -2,7 +2,7 @@
 % Please edit documentation in R/exelbib.R
 \name{bib_to_xlsx}
 \alias{bib_to_xlsx}
-\title{Title}
+\title{Import References to your Excel-File}
 \usage{
 bib_to_xlsx(
   bib_file_path = "export.bib",
@@ -18,10 +18,10 @@ bib_to_xlsx(
 \item{sheet_name}{Sheet name where you want the references imported to, default is "Import".}
 }
 \value{
-References in your Excel file!
+References in your Excel file
 }
 \description{
-Title
+Import References to your Excel-File
 }
 \examples{
 download.file(url="https://raw.githubusercontent.com/Enno-W/excelbib/main/Excel_References_example.xlsx", destfile = "Excel_References_example.xlsx", mode ="wb")

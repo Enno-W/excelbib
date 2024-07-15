@@ -2,7 +2,7 @@
 % Please edit documentation in R/exelbib.R
 \name{xlsx_to_bib}
 \alias{xlsx_to_bib}
-\title{Title}
+\title{Update your References from an Excel-file}
 \usage{
 xlsx_to_bib(
   excel_file = "References.xlsx",
@@ -27,7 +27,7 @@ xlsx_to_bib(
 An error message if the file does not exist.
 }
 \description{
-Title
+Update your References from an Excel-file
 }
 \examples{
 download.file(url="https://raw.githubusercontent.com/Enno-W/excelbib/main/Excel_References_example.xlsx", destfile = "Excel_References_example.xlsx", mode ="wb")
