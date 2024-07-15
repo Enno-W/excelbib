@@ -1,10 +1,10 @@
 Package: excelbib
-Title: What the Package Does (One Line, Title Case)
+Title: Using Excel as Reference Software for Rmarkdown or Rquarto
 Version: 0.0.0.9000
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
+    person("Enno", "Winkler", , "enno_winkler@outlook.com", role = c("aut", "cre"),
+           comment = c(ORCID = "0009-0008-0665-3447"))
+Description: This package can create an excel-file in your working directory that can be used for organizing and citing references in one place. A .bib - file can be created from a list of BibTex-Entries in the excel-file. It is also possible to import references from a .bib-file to the excel-file.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
