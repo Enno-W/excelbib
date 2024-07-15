@@ -6,7 +6,7 @@
 \usage{
 bib_to_xlsx(
   bib_file_path = "export.bib",
-  excel_file_path = "Excel_References.xlsx",
+  excel_file_path = "References.xlsx",
   sheet_name = "Import"
 )
 }
@@ -24,8 +24,8 @@ References in your Excel file!
 Title
 }
 \examples{
-download.file(url="https://raw.githubusercontent.com/Enno-W/excelbib/main/Excel_References.xlsx", destfile = "Excel_References.xlsx", mode ="wb")
-download.file(url="https://raw.githubusercontent.com/Enno-W/excelbib/main/export.bib", destfile = "export.bib", mode ="wb")
+download.file(url="https://raw.githubusercontent.com/Enno-W/excelbib/main/Excel_References_example.xlsx", destfile = "Excel_References_example.xlsx", mode ="wb")
+download.file(url="https://raw.githubusercontent.com/Enno-W/excelbib/main/export_example.bib", destfile = "export_example.bib", mode ="wb")
 require("openxlsx")
-bib_to_xlsx()
+bib_to_xlsx(bib_file_path = "export_example.bib", excel_file_path = "Excel_References_example.xlsx")
 }
