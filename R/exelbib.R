@@ -15,13 +15,13 @@
 #' require("xlsx")
 #' xlsx_to_bib ("Excel_References_example.xlsx", bib_file="example_bibliography.bib", sheet = 2, column = 1, first_row = 2)
 xlsx_to_bib <- function(excel_file = "References.xlsx", bib_file = "bibliography.bib", sheet = 2, column = 1, first_row = 2) {
-
   if (!file.exists(excel_file)) {
     stop("The specified Excel file does not exist.")
   }
-  excel_data <- xlsx::read.xlsx(excel_file, sheetIndex = sheet, colIndex = column, startRow = first_row, as.data.frame = TRUE, header = F)
+  wb <- openxlsx::loadWorkbook(excel_file)
+  data <- openxlsx::readWorkbook(wb, sheet = sheet, colNames = FALSE, startRow = first_row)
 
-  citation_keys <- as.character(stats::na.omit(excel_data[, 1]))
+  citation_keys <- as.character(stats::na.omit(data[[column]]))
 
   writeLines(citation_keys, bib_file)
 
@@ -44,7 +44,9 @@ xlsx_to_bib <- function(excel_file = "References.xlsx", bib_file = "bibliography
 #' require("openxlsx")
 #' bib_to_xlsx(bib_file_path = "export_example.bib", excel_file_path = "Excel_References_example.xlsx")
 bib_to_xlsx <- function(bib_file_path = "export.bib", excel_file_path = "References.xlsx", sheet_name = "Import") {
-
+  if (!file.exists(bib_file_path)) {
+    stop("The specified .bib file does not exist: ", bib_file_path)
+  }
   bib_file <- readLines(bib_file_path, warn = FALSE)
   text <- paste(bib_file, collapse = " ")
   entries <- unlist(strsplit(text, split = "\\@"))
@@ -54,7 +56,7 @@ bib_to_xlsx <- function(bib_file_path = "export.bib", excel_file_path = "Referen
   wb <- openxlsx::loadWorkbook(excel_file_path)
   openxlsx::writeData(wb, sheet_name, data, colNames = FALSE)
   openxlsx::saveWorkbook(wb, excel_file_path, overwrite = TRUE)
-  message("Bibliography has been successfully written to ", excel_file_path)
+  message("Bibliography has been successfully imported to ", excel_file_path)
 }
 
 #' Add an Empty Excel-File and Start using Excel as Reference Software
