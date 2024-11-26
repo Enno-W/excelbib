@@ -31,6 +31,6 @@ Update your References from an Excel-file
 }
 \examples{
 download.file(url="https://raw.githubusercontent.com/Enno-W/excelbib/main/Excel_References_example.xlsx", destfile = "Excel_References_example.xlsx", mode ="wb")
-require("xlsx")
+require("openxlsx")
 xlsx_to_bib ("Excel_References_example.xlsx", bib_file="example_bibliography.bib", sheet = 2, column = 1, first_row = 2)
 }

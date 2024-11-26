@@ -8,11 +8,11 @@
 #'
 #' @return An error message if the file does not exist.
 #' @export
-#' @import xlsx openxlsx utils
+#' @import openxlsx utils
 #'
 #' @examples
 #' download.file(url="https://raw.githubusercontent.com/Enno-W/excelbib/main/Excel_References_example.xlsx", destfile = "Excel_References_example.xlsx", mode ="wb")
-#' require("xlsx")
+#' require("openxlsx")
 #' xlsx_to_bib ("Excel_References_example.xlsx", bib_file="example_bibliography.bib", sheet = 2, column = 1, first_row = 2)
 xlsx_to_bib <- function(excel_file = "References.xlsx", bib_file = "bibliography.bib", sheet = 2, column = 1, first_row = 2) {
   if (!file.exists(excel_file)) {
@@ -36,7 +36,7 @@ xlsx_to_bib <- function(excel_file = "References.xlsx", bib_file = "bibliography
 #'
 #' @return References in your Excel file
 #' @export
-#' @import xlsx openxlsx utils
+#' @import openxlsx utils
 #'
 #' @examples
 #' download.file(url="https://raw.githubusercontent.com/Enno-W/excelbib/main/Excel_References_example.xlsx", destfile = "Excel_References_example.xlsx", mode ="wb")
@@ -63,7 +63,7 @@ bib_to_xlsx <- function(bib_file_path = "export.bib", excel_file_path = "Referen
 #'
 #' @param xlsx_name The name you want to use for your Excel-file where you organize your references.
 #'
-#' @return
+#' @return An Excel file to store references
 #' @export
 #' @import utils
 #'

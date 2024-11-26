@@ -9,6 +9,9 @@ add_xlsx(xlsx_name = "References.xlsx")
 \arguments{
 \item{xlsx_name}{The name you want to use for your Excel-file where you organize your references.}
 }
+\value{
+An Excel file to store references
+}
 \description{
 Add an Empty Excel-File and Start using Excel as Reference Software
 }
