@@ -5,3 +5,5 @@ This package lets you use Excel almost the same way as you would use a reference
 5. To write your references to the bibliography file, use `xlsx_to_bib()`. The default name for the .bib-file is "bibliography.bib". THIS WILL OVERWRITE YOUR .bib-file!!
 6. Now you can use your references in Rmardown or Quarto, simply include `bibliography: bibliography.bib` in the YAML header.
 7. See https://quarto.org/docs/authoring/citations.html for citation basics in Quarto, and https://en.wikibooks.org/wiki/LaTeX/Bibliography_Management#BibTeX for more information on BibTex. 
+If you want to use an online document, for example on One Drive, you can simply write the dowload link in the "file"- argument of xlsx_to_bib(). 
+For Onedrive, after you shared your excel document using the link share function, simply delete all characters after the question mark in the link, and replace them with "download=1".
