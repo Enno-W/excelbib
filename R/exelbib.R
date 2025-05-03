@@ -16,38 +16,32 @@
 #' xlsx_to_bib ("Excel_References_example.xlsx", bib_file="example_bibliography.bib", sheet = 2, column = 1, first_row = 2)
 #' xlsx_to_bib("https://bit.ly/excelbibexample")
 xlsx_to_bib <- function(excel_file = "References.xlsx", bib_file = "bibliography.bib", sheet = 2, column = 1, first_row = 2) {
-  # Check if the input is a URL
   if (grepl("^http[s]?://", excel_file)) {
     temp_file <- tempfile(fileext = ".xlsx")
-
-    # Check if the local file already exists
     if (file.exists(temp_file)) {
       cat("You are downloading an excel-file via a download link, but a temporary file with the name", temp_file, "already exists.\n")
       overwrite <- readline(prompt = "Do you want to overwrite it? (yes/no): ")
-
       if (tolower(overwrite) != "yes") {
         stop("File not overwritten. Exiting.")
       }
     }
-
-    # Download the file
     download.file(excel_file, destfile = temp_file, mode = "wb")
     excel_file <- temp_file
   }
 
-  # Check if the local Excel file exists
   if (!file.exists(excel_file)) {
     stop("The specified Excel file does not exist.")
   }
 
-  # Load the workbook and read the specified data
   wb <- openxlsx::loadWorkbook(excel_file)
   data <- openxlsx::readWorkbook(wb, sheet = sheet, colNames = FALSE, startRow = first_row)
 
-  # Process the BibTeX entries
+  # Clean BibTeX entries
   citation_keys <- as.character(stats::na.omit(data[[column]]))
-  writeLines(citation_keys, bib_file)
+  citation_keys <- gsub("&#10;", "\n", citation_keys)  # Replace HTML line breaks
+  citation_keys <- gsub("&#13;", "", citation_keys)    # Optionally clean carriage returns if present
 
+  writeLines(citation_keys, bib_file)
   message("Bibliography has been successfully written to ", bib_file)
 }
 
